@@ -4,9 +4,9 @@ import { ISearchProps } from "../../Types/type";
 const Search = React.forwardRef<HTMLInputElement, ISearchProps>(
   ({ searchValue, handleChange }, ref) => {
     return (
-      <div className="max-w-md mx-auto py-6 ">
-        <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-whiten">
-          <div className="grid place-items-center h-full w-12 text-gray-300">
+      <div className="mx-auto py-6">
+        <div className="relative flex items-center justify-center w-full h-12 rounded-full border">
+          <div className="grid place-items-center h-full w-10 text-gray-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -22,8 +22,8 @@ const Search = React.forwardRef<HTMLInputElement, ISearchProps>(
             </svg>
           </div>
           <input
-            className="h-full w-full outline-none text-sm text-gray-700 pr-2"
-            type="search"
+            className="h-full w-[500px] outline-none text-sm text-gray-700"
+            type="input"
             ref={ref}
             placeholder="Search..."
             value={searchValue}

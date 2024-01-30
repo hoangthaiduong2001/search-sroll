@@ -12,10 +12,10 @@ const ListCard = ({ card, cardCount }: ICardListProps) => {
   }
 
   return (
-    <div className="">
+    <div className="grid grid-cols-5 gap-4 items-center justify-center">
       {item?.map(({ id, brand, title, price, thumbnail }) => (
         <Card
-          key={id}
+          key={`title + ${id}`}
           id={id}
           brand={brand}
           price={price}

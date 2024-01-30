@@ -1,19 +1,37 @@
-import { Link } from "react-router-dom";
 import { ICardProps } from "../../Types/type";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Typography,
+} from "@material-tailwind/react";
 
-const Card = ({ id, title, price, brand, thumbnail }: ICardProps) => {
+const CardProduct = ({ id, title, price, brand, thumbnail }: ICardProps) => {
   return (
-    <div className="">
-      <Link to={`/products/${id}`} className="">
-        <div className="">
-          <img className="" src={thumbnail} alt={title} />
-          <span className="">{price}</span>
-          <span className="">{brand}</span>
-        </div>
-      </Link>
-      <span className="">{title}</span>
-    </div>
+    <Card placeholder={id} className="mt-6 overflow-hidden gap-5 ">
+      <CardHeader
+        placeholder={id}
+        color="blue-gray"
+        className="relative h-[300px]"
+      >
+        <img className="" src={thumbnail} alt={title} />
+      </CardHeader>
+      <CardBody placeholder={id}>
+        <Typography
+          placeholder={id}
+          variant="h5"
+          color="blue-gray"
+          className="mb-2"
+        >
+          <span className="">{title}</span>
+        </Typography>
+        <Typography placeholder={id} className="flex flex-col">
+          <span className="">{`Price: ${price}`}</span>
+          <span className="">{`Brand: ${brand}`}</span>
+        </Typography>
+      </CardBody>
+    </Card>
   );
 };
 
-export default Card;
+export default CardProduct;
