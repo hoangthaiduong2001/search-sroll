@@ -8,7 +8,7 @@ git clone https://github.com/hoangthaiduong2001/search-sroll.git
 
 ### `npm start`
 
-# Iechnology used in the project
+# Technology used in the project
 
 react-router-dom
 
