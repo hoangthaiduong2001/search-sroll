@@ -1,8 +1,6 @@
 # Installation instructions
 
-git clone https://github.com/hoangthaiduong2001/search-sroll.git
-
-### `git clone`
+### `git clone https://github.com/hoangthaiduong2001/search-sroll.git`
 
 ### `npm install`
 
