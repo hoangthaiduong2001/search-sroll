@@ -29,3 +29,10 @@ export interface ICard {
   thumbnail: string;
   images?: string[];
 }
+
+export interface IResponseAllData {
+  limit: number;
+  products: ICard[];
+  skip: number;
+  total: number;
+}

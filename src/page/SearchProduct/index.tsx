@@ -16,7 +16,6 @@ const SearchProduct = () => {
       return response.json();
     },
   });
-  console.log(data);
 
   if (isLoading) return <BeatLoader color="#36d7b7" />;
   if (isError) return <p className="error">Error</p>;

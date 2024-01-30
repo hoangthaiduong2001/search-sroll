@@ -10,7 +10,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSearchInput = (e: any) => {
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     startTransition(() => {
       setSearchValue(e.target.value);
     });

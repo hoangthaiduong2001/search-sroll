@@ -3,29 +3,17 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { BeatLoader } from "react-spinners";
 import { useQuery } from "@tanstack/react-query";
 import ListCard from "../../Components/ListCard";
+import { useGetAllData } from "../../hooks/getAllData.hooks";
+import { useSearchData } from "../../hooks/searchData.hooks";
 
 const Home = () => {
   const [hasMore, setHasMore] = useState<boolean>(true);
-  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(1);
   const [products, setProducts] = useState<any[]>([]);
 
-  const { data: dataAll } = useQuery<any>({
-    queryKey: ["getAll", page],
-    queryFn: async () => {
-      const response = await fetch("https://dummyjson.com/products");
-      return response.json();
-    },
-  });
-  const { data, isLoading, isError } = useQuery<any>({
-    queryKey: ["getAllProducts", page],
-    queryFn: async () => {
-      const response = await fetch(
-        `https://dummyjson.com/products?limit=20&skip=${(page - 1) * 20}`
-      );
-      return response.json();
-    },
-    placeholderData: true,
-  });
+  const { data: dataAll } = useGetAllData({ limit: limit });
+
+  const { data, isLoading, isError } = useSearchData({ limit: limit });
 
   useEffect(() => {
     if (data?.products) {
@@ -35,7 +23,7 @@ const Home = () => {
         setHasMore(false);
       }
     }
-  }, [page, data]);
+  }, [limit, data]);
 
   if (isLoading) return <BeatLoader color="#36d7b7" />;
   if (isError) return <p className="error">Error</p>;
@@ -43,7 +31,7 @@ const Home = () => {
   return (
     <div className="px-10">
       <InfiniteScroll
-        next={() => setPage((prevPage) => prevPage + 1)}
+        next={() => setLimit((prevLimit) => prevLimit + 1)}
         hasMore={hasMore}
         loader={<BeatLoader color="#36d7b7" />}
         dataLength={products.length}
