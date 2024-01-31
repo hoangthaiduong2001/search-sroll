@@ -7,7 +7,7 @@ export const useGetAllData = ({
   limit: number;
 }): UseQueryResult<IResponseAllData, DefaultError> => {
   return useQuery({
-    queryKey: ["getAll", limit],
+    queryKey: ["getAllData", limit],
     queryFn: async () => {
       const response = await fetch("https://dummyjson.com/products");
       return response.json();

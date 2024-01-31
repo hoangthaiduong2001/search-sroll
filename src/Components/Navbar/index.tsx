@@ -21,9 +21,12 @@ const Navbar = () => {
       navigate({
         pathname: `/search/${searchValue}`,
       });
+    } else if (searchValue === "") {
+      navigate({
+        pathname: `/search/`,
+      });
     }
   }, [searchValue]);
-
   return (
     <>
       <nav className="">

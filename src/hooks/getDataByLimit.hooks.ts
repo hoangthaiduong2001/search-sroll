@@ -1,18 +1,19 @@
 import { DefaultError, UseQueryResult, useQuery } from "@tanstack/react-query";
 import { IResponseAllData } from "../Types/type";
 
-export const useSearchData = ({
-  search,
+export const useGetDataByLimit = ({
+  limit,
 }: {
-  search?: string;
+  limit: number;
 }): UseQueryResult<IResponseAllData, DefaultError> => {
   return useQuery({
-    queryKey: ["searchData", search],
+    queryKey: ["getDataByLimit", limit],
     queryFn: async () => {
       const response = await fetch(
-        `https://dummyjson.com/products/search?q=${search}`
+        `https://dummyjson.com/products?limit=20&skip=${(limit - 1) * 20}`
       );
       return response.json();
     },
+    placeholderData: true,
   });
 };

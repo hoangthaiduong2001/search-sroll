@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { BeatLoader } from "react-spinners";
-import { useQuery } from "@tanstack/react-query";
 import ListCard from "../../Components/ListCard";
 import { useGetAllData } from "../../hooks/getAllData.hooks";
-import { useSearchData } from "../../hooks/searchData.hooks";
+import { useGetDataByLimit } from "../../hooks/getDataByLimit.hooks";
 
 const Home = () => {
   const [hasMore, setHasMore] = useState<boolean>(true);
@@ -13,7 +12,7 @@ const Home = () => {
 
   const { data: dataAll } = useGetAllData({ limit: limit });
 
-  const { data, isLoading, isError } = useSearchData({ limit: limit });
+  const { data, isLoading, isError } = useGetDataByLimit({ limit: limit });
 
   useEffect(() => {
     if (data?.products) {
